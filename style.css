@@ -1,0 +1,87 @@
+/* General Dark Theme */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0d1117; /* Dark background */
+  color: #e6edf3; /* Light text */
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 1rem;
+  background: #161b22;
+  border-bottom: 2px solid #00e0ff;
+}
+
+header h1 {
+  color: #00e0ff;
+  margin: 0;
+}
+
+header p {
+  color: #8b949e;
+  font-size: 0.9rem;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+
+.controls label {
+  color: #ffcd4e;
+  font-weight: bold;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  background: #0d1117;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+}
+
+.controls button {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.controls button:hover {
+  background: #238636;
+}
+
+/* Chart */
+.chart-container {
+  background: #0d1117;
+  padding: 1rem;
+}
+
+/* Status */
+.status {
+  padding: 1rem;
+  background: #161b22;
+  border-top: 1px solid #30363d;
+}
+
+.status h2 {
+  color: #ff4ecd;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #8b949e;
+  border-top: 1px solid #30363d;
+}

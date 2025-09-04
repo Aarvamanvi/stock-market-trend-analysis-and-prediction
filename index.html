@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Analysis – Trend & Prediction</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>📈 Stock Analysis – Trend & Prediction</h1>
+    <p>Real-time streaming + online learning (EMA, RSI, MACD)</p>
+  </header>
+
+  <section class="controls">
+    <label for="symbol">Symbol</label>
+    <input id="symbol" value="GOOGL">
+    
+    <label for="mode">Mode</label>
+    <select id="mode">
+      <option>Demo (no API key)</option>
+      <option>Live (Alpha Vantage)</option>
+    </select>
+
+    <label for="interval">Interval</label>
+    <select id="interval">
+      <option>1 min</option>
+      <option>5 min</option>
+      <option>15 min</option>
+    </select>
+
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+
+    <label for="window">Window (points)</label>
+    <input id="window" type="number" value="300">
+
+    <label for="lr">Learning Rate</label>
+    <input id="lr" type="number" step="0.001" value="0.01">
+
+    <label for="l2">L2 (λ)</label>
+    <input id="l2" type="number" step="0.0001" value="0.0005">
+  </section>
+
+  <section class="chart-container">
+    <canvas id="stockChart"></canvas>
+  </section>
+
+  <section class="status">
+    <h2>Status</h2>
+    <p>Demo: tick</p>
+    <p>Last Price: <span id="lastPrice">93.9467</span></p>
+    <p>Predicted Next: <span id="predicted">106.7885</span></p>
+
+    <h2>Indicators (latest)</h2>
+    <p>EMA(20): <span id="ema">114.9579</span></p>
+    <p>RSI(14): <span id="rsi">8.91</span></p>
+    <p>MACD(12,26,9): <span id="macd">-11.490346</span></p>
+  </section>
+
+  <footer>
+    <p>Vanilla JS + Chart.js • Live data by Alpha Vantage</p>
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('stockChart').getContext('2d');
+    const stockChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: 'Price',
+            data: [],
+            borderColor: '#00e0ff',
+            backgroundColor: 'rgba(0,224,255,0.2)',
+            tension: 0.3
+          },
+          {
+            label: 'Prediction (next)',
+            data: [],
+            borderColor: '#ff4ecd',
+            borderDash: [5,5],
+            backgroundColor: 'rgba(255,78,205,0.2)',
+            tension: 0.3
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: {
+            labels: { color: "#e6edf3" }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: "#e6edf3" },
+            grid: { color: "rgba(255,255,255,0.1)" }
+          },
+          y: {
+            ticks: { color: "#e6edf3" },
+            grid: { color: "rgba(255,255,255,0.1)" }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
